@@ -1,0 +1,17 @@
+{
+  "name": "automation-masterclass",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive learning center for n8n, Zapier, Make, and GoHighLevel automation fundamentals.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0"
+  }
+}
