@@ -2,8 +2,11 @@
   "name": "automation-masterclass",
   "version": "1.0.0",
   "private": true,
-  "description": "Interactive learning center for n8n, Zapier, Make, and GoHighLevel automation fundamentals.",
+  "description": "Interactive learning center for n8n, Zapier, Make, GoHighLevel, and Microsoft Power Automate fundamentals.",
   "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

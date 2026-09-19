@@ -34,6 +34,8 @@ automation/
                                  note: currently behind index.html on content added after
                                  the Power Automate track)
   dist/                    production build output (created by `npm run build`)
+  .nvmrc                   pins Node 22 for hosts (also in package.json "engines")
+  netlify.toml, vercel.json  host build settings: `npm run build`, publish `dist`
 ```
 
 ## Commands
@@ -45,7 +47,19 @@ npm run build   # produces the optimized, minified site in dist/
 npm run preview # serves the dist/ build locally, to sanity-check a production build
 ```
 
-After `npm run build`, `dist/index.html` is a fully self-contained static site you can host anywhere (or just open, though the dev/build workflow is the intended way to work on it).
+After `npm run build`, `dist/` is a static site you can host on any static host. It must be served over `http(s)` (any host, or `npm run preview` locally) — browsers block ES-module scripts on `file://`, so double-clicking `dist/index.html` shows the page but none of the buttons work. For a no-server, double-click version use `automation_masterclass.html` instead. The only external request is the Inter / JetBrains Mono font stylesheet from Google Fonts.
+
+## Deploying (Netlify, Vercel, or any static host)
+
+Publish the **build output**, not the repo root — the root `index.html` is Vite source that references `/src/main.js` and won't work as-is.
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Output / publish directory | `dist` |
+| Node version | 22 (pinned in `.nvmrc` and `package.json` `engines`; Tailwind v4's compiler needs Node 20+) |
+
+`netlify.toml` and `vercel.json` already set the build command and output directory, so importing the repo into either service needs no manual settings. There are no environment variables, server routes, or rewrites to configure — it is a single static page. `automation_masterclass.html` is not part of the build and is not deployed.
 
 ## Design system
 
